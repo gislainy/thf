@@ -1,0 +1,17 @@
+{
+    "name": "totvs-menu-html",
+    "description": "TOTVS | Sample Menu HTML",
+    "version": "0.1.0",
+    "private": true,
+    "license": "Commercial",
+    "homepage": "www.totvs.com",
+    "author": {
+        "name": "TOTVS S/A",
+        "url": "www.totvs.com"
+    },
+    "scripts": {
+        "init": "npm install"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}

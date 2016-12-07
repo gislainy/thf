@@ -1,0 +1,113 @@
+<totvs-page type="list">
+    <totvs-page-navbar>
+        <totvs-page-breadcrumb>
+            <breadcrumb link="#/">{{ ::'l-home' | i18n : [] : 'js/clientes' }}</breadcrumb>
+            <breadcrumb>{{ ::'l-categoria' | i18n : [] : 'js/clientes' }}</breadcrumb>
+        </totvs-page-breadcrumb>
+        <totvs-page-header>
+            <totvs-page-header-title title="{{ ::'l-categoria' | i18n : [] : 'js/clientes' }}">
+            </totvs-page-header-title>
+            <totvs-page-header-operation>
+                <totvs-page-header-operation-action limit-primary-action="3">
+                    <action ng-href="#/clientes/novo" icon="glyphicon glyphicon-plus" class="btn-primary">
+                        {{ ::'btn-add' | i18n}}
+                    </action>
+                    <action ng-click="controller.editarCliente()"class="glyphicon-pencil">
+                        {{ 'btn-edit' | i18n }}
+                    </action>
+                </totvs-page-header-operation-action>
+            </totvs-page-header-operation>
+        </totvs-page-header>
+    </totvs-page-navbar>
+    <totvs-page-content>
+        <!--    <totvs-list-item ng-repeat="cliente in controller.todosClientes">
+            <totvs-list-item-header>
+                <totvs-list-item-title title="{{cliente.nome}}" link="#/clientes/detail/{{cliente.id}}">
+                </totvs-list-item-title>
+                <totvs-list-item-action limit-primary-acetion="1">
+                    <action link="#/clientes/editar/{{cliente.id}}" class="glyphicon-pencil">{{ 'btn-edit' | i18n }}</action>
+                </totvs-list-item-action>
+            </totvs-list-item-header>
+            <totvs-list-item-content>
+                <totvs-list-item-info 
+                    title="{{ ::'l-doc-cpf' | i18n : [] : 'js/clientes' }}" 
+                    value="{{ ::cliente.doc_cpf | mask:'999.999.999-99' }}">
+                </totvs-list-item-info>
+                <totvs-list-item-info 
+                    title="{{ ::'l-doc-rg' | i18n : [] : 'js/clientes' }}" 
+                    value="{{ ::cliente.doc_rg}}">
+                </totvs-list-item-info>
+                <totvs-list-item-info 
+                    title="{{ ::'l-phone' | i18n : [] : 'js/clientes' }}" 
+                    value="{{ ::cliente.telefone | mask: '(99) 9999-9999'}}">
+                </totvs-list-item-info>
+                <totvs-list-item-info 
+                    title="{{ ::'l-celular' | i18n : [] : 'js/clientes' }}" 
+                    value="{{ ::cliente.celular | mask: '(99) 9 9999-9999'}}">
+                </totvs-list-item-info>
+                <totvs-list-item-info 
+                    title="{{ ::'l-birthday' | i18n : [] : 'js/clientes' }}" 
+                    value="{{ ::cliente.birthday | date:'dd/MM/yyyy' }}">
+                </totvs-list-item-info>
+            </totvs-list-item-content>
+        </totvs-list-item>-->
+
+
+        <!--{{controller.todosClientes | json}}-->
+        <!--{{controller.tabelaColunaCliente | json}}-->
+        <totvs-page-form name="formGrid">
+            <!--<totvs-grid 
+                grid-data="controller.todosClientes" 
+                editable="true"
+                resizable="true" 
+                auto-resize-content="true"
+                auto-resize-column="true"
+                grid-options="controller.gridOptions">
+            </totvs-grid>-->
+
+            <totvs-grid grid-data="controller.todosClientes" grid-selected-item="controller.selectedItem" grid="controller.myGrid" auto-resize-content="true" add-select-column="separate" selectable="row"
+                auto-resize-column="true">
+                <totvs-grid-column field="nome">
+                    {{ ::'l-name' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="birthday" filter="date : shortDate">
+                    {{ ::'l-birthday' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="doc_cpf" filter="mask: 999.999.999-99">
+                    {{ ::'l-doc-cpf' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="doc_rg">
+                    {{ ::'l-doc-rg' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="email">
+                    {{ ::'l-email' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="telefone" filter="mask: (62) 9999-9999">
+                    {{ ::'l-phone' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="celular" filter="mask: (62) 9 9999-9999">
+                    {{ ::'l-celular' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="cep" filter="mask: 99999-999">
+                    {{ ::'l-cep' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="logradouro">
+                    {{ ::'l-logradouro' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="bairro">
+                    {{ ::'l-bairro' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="cidade">
+                    {{ ::'l-cidade' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <totvs-grid-column field="estado">
+                    {{ ::'l-estado' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-column>
+                <!--<totvs-grid-group field="tipo">
+                     {{ ::'l-tipo' | i18n : [] : 'js/clientes' }}
+                </totvs-grid-group>-->
+            </totvs-grid>
+        </totvs-page-form>
+
+    </totvs-page-content>
+</totvs-page>

@@ -1,0 +1,169 @@
+<totvs-page>
+	<totvs-page-navbar>
+
+        <totvs-page-breadcrumb>
+            <breadcrumb link="#/">
+                <span class="hidden-xs">{{ ::'l-home' | i18n }}</span>
+                <span class="glyphicon glyphicon-home hidden-sm hidden-md hidden-lg"></span>
+            </breadcrumb>
+            <breadcrumb>Totvs Grid</breadcrumb>
+		</totvs-page-breadcrumb>
+
+		<totvs-page-header>
+			<totvs-page-header-title title="Grid"> </totvs-page-header-title>
+
+			<totvs-page-header-operation>
+                <totvs-page-header-operation-action>
+                    <action link="#/">Voltar</action>
+				</totvs-page-header-operation-action>
+            </totvs-page-header-operation>
+		</totvs-page-header>
+
+	</totvs-page-navbar>
+
+	<totvs-page-content>
+        <totvs-page-form name="formGrid">
+
+            <fieldset>
+
+                <div class="col-lg-12 col-md-6 col-sm-12">
+
+
+                    <totvs-grid grid-data="controller.products"
+                                editable="true"
+                                reorderable="true"
+                                resizable="true"
+                                grid-selected-items="controller.selected"
+                                grid-dirty-items="controller.dirty"
+                                on-edit="controller.onEdit(event, column)"
+                                on-save="controller.onSave(event, column, value, currentIndex, original)"
+                                on-change="controller.onChange(event)"
+                                on-data="controller.onData(data)"
+                                grid="controller.myGrid">
+
+                        <totvs-grid-column field="productId" width="100"
+                                           template="controller.template">
+                            {{ ::'l-product-id' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                        <totvs-grid-column field="productCode" width="150">
+                            {{ ::'l-product-code' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                        <totvs-grid-column field="description" width="400" editable="true" style="background-color: lightblue;"  editor="controller.editor">
+                            {{ ::'l-description' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                        <totvs-grid-column field="stock" width="100" class="text-right" filter="number">
+                            {{ ::'l-stock' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                        <totvs-grid-column field="price" width="70" class="text-right" filter="currency">
+                            {{ ::'l-price' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                        <totvs-grid-column field="supplier" width="100"
+                                           select-id="id"
+                                           select-description="description"
+                                           select-service="GridSelectTestFactory"
+                                           editable="true">
+                            {{ ::'l-supplier' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                    </totvs-grid>
+
+
+
+
+
+
+                    <!--<totvs-grid grid-data="controller.products"
+                                editable="true"
+                                reorderable="true"
+                                resizable="true"
+                                grid-selected-items="controller.selected"
+                                grid-dirty-items="controller.dirty"
+                                on-edit="controller.onEdit(event, column)"
+                                on-save="controller.onSave(event, column, value, currentIndex, original)"
+                                on-change="controller.onChange(event)"
+                                on-data="controller.onData(data)"
+                                grid="controller.myGrid">
+
+                        <totvs-grid-column field="productId" width="100">
+                            {{ ::'l-product-id' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                        <totvs-grid-column field="productCode" width="150">
+                            {{ ::'l-product-code' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                        <totvs-grid-column field="description" width="400" editable="true">
+                            {{ ::'l-description' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                        <totvs-grid-column field="stock" width="100" class="text-right" filter="number">
+                            {{ ::'l-stock' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                        <totvs-grid-column field="price" width="70" class="text-right" filter="currency">
+                            {{ ::'l-price' | i18n : [] : 'js/grid' }}
+                        </totvs-grid-column>
+
+                        <totvs-grid-column field="supplier" width="100"
+                                           select-id="id"
+                                           select-description="description"
+                                           select-service="GridSelectTestFactory"
+                                           editable="true"
+                                           title="{{ ::'l-supplier' | i18n : [] : 'js/grid' }}">
+                            <option id="1">Dell</option>
+                            <option id="2">Microsoft</option>
+                        </totvs-grid-column>
+
+                        <totvs-grid-detail>
+
+                            <totvs-grid grid-data="dataItem.orders" grid-height="150" editable="true">
+
+                                <totvs-grid-column field="clientId" width="100" class="text-right" filter="number">
+                                    {{ ::'l-client-id' | i18n : [] : 'js/grid' }}
+                                </totvs-grid-column>
+
+                                <totvs-grid-column field="orderId" width="100" class="text-right" filter="number">
+                                    {{ ::'l-order-id' | i18n : [] : 'js/grid' }}
+                                </totvs-grid-column>
+
+                                <totvs-grid-column field="date" width="100" filter="date">
+                                    {{ ::'l-date' | i18n : [] : 'js/grid' }}
+                                </totvs-grid-column>
+
+                                <totvs-grid-column field="status" width="100" editable="true" title="{{ ::'l-status' | i18n : [] : 'js/grid' }}">
+                                    <option id="1">{{ ::'l-status-1' | i18n : [] : 'js/grid' }}</option>
+                                    <option id="2">{{ ::'l-status-2' | i18n : [] : 'js/grid' }}</option>
+                                    <option id="3">{{ ::'l-status-3' | i18n : [] : 'js/grid' }}</option>
+                                </totvs-grid-column>
+
+                            </totvs-grid>
+
+                        </totvs-grid-detail>
+
+                        <totvs-grid-group field="supplier"></totvs-grid-group>
+
+                    </totvs-grid>-->
+
+
+
+
+                    <!--<totvs-grid grid-data="controller.products"
+                                editable="true"
+                                resizable="true"
+                                grid-options="controller.gridOptions"
+                                grid="controller.myGrid">
+                    </totvs-grid>-->
+
+
+                </div>
+
+            </fieldset>
+
+		</totvs-page-form>
+	</totvs-page-content>
+</totvso-page>

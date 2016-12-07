@@ -1,0 +1,44 @@
+<totvs-page type="detail">
+    <totvs-page-navbar>
+       <totvs-page-breadcrumb>
+            <breadcrumb link="#/">{{ ::'l-home' | i18n : [] : 'js/clientes' }}</breadcrumb>
+            <breadcrumb>{{ ::'l-categoria' | i18n : [] : 'js/clientes' }}</breadcrumb>
+        </totvs-page-breadcrumb>
+        <totvs-page-header>
+            <totvs-page-header-title title="{{ ::'l-categoria' | i18n : [] : 'js/clientes' }}">
+            </totvs-page-header-title>
+            <totvs-page-header-operation>
+                <totvs-page-header-operation-action limit-primary-action="3">
+                </totvs-page-header-operation-action>
+            </totvs-page-header-operation>
+        </totvs-page-header>
+    </totvs-page-navbar>
+    <totvs-page-content>
+        <totvs-page-detail>
+            <totvs-page-detail-title title="{{controller.controller.cliente.nome}}">
+            </totvs-page-detail-title>
+        </totvs-page-detail-header>
+        <totvs-page-detail-content>
+            <totvs-page-detail-info 
+                title="{{ ::'l-doc-cpf' | i18n : [] : 'js/clientes' }}" 
+                value="{{ ::controller.cliente.doc_cpf | mask:'999.999.999-99' }}">
+            </totvs-page-detail-info>
+            <totvs-page-detail-info 
+                title="{{ ::'l-doc-rg' | i18n : [] : 'js/clientes' }}" 
+                value="{{ ::controller.cliente.doc_rg}}">
+            </totvs-page-detail-info>
+            <totvs-page-detail-info 
+                title="{{ ::'l-phone' | i18n : [] : 'js/clientes' }}" 
+                value="{{ ::controller.cliente.telefone | mask: '(99) 9999-9999'}}">
+            </totvs-page-detail-info>
+            <totvs-page-detail-info 
+                title="{{ ::'l-celular' | i18n : [] : 'js/clientes' }}" 
+                value="{{ ::controller.cliente.celular | mask: '(99) 9 9999-9999'}}">
+            </totvs-page-detail-info>
+            <totvs-page-detail-info 
+                title="{{ ::'l-birthday' | i18n : [] : 'js/clientes' }}" 
+                value="{{ ::controller.cliente.birthday | date:'dd/MM/yyyy' }}">
+            </totvs-page-detail-info>
+        </totvs-page-detail-content>
+    </totvs-page-content>
+</totvs-page>
